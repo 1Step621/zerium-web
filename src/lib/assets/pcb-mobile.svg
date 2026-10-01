@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 2000" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <g id="resistor"><rect x="0" y="-6" width="40" height="12" rx="1" /><path d="M8-6V6M32-6V6" stroke-width="1" /></g>
+    <g id="chip">
+      <path d="M-40-28L-28-40H40V40H-40Z" />
+      <circle cx="-28" cy="-28" r="2" />
+      <g stroke-width="1.5">
+        <rect x="-52" y="-27" width="12" height="6" rx="1" />
+        <rect x="40" y="-27" width="12" height="6" rx="1" />
+        <rect x="-27" y="-52" width="6" height="12" rx="1" />
+        <rect x="-27" y="40" width="6" height="12" rx="1" />
+        <rect x="-52" y="-11" width="12" height="6" rx="1" />
+        <rect x="40" y="-11" width="12" height="6" rx="1" />
+        <rect x="-11" y="-52" width="6" height="12" rx="1" />
+        <rect x="-11" y="40" width="6" height="12" rx="1" />
+        <rect x="-52" y="5" width="12" height="6" rx="1" />
+        <rect x="40" y="5" width="12" height="6" rx="1" />
+        <rect x="5" y="-52" width="6" height="12" rx="1" />
+        <rect x="5" y="40" width="6" height="12" rx="1" />
+        <rect x="-52" y="21" width="12" height="6" rx="1" />
+        <rect x="40" y="21" width="12" height="6" rx="1" />
+        <rect x="21" y="-52" width="6" height="12" rx="1" />
+        <rect x="21" y="40" width="6" height="12" rx="1" />
+      </g>
+    </g>
+  </defs>
+  <path d="M0 156H20 M0 172H20 M0 188H20 M0 204H20 M48 128V80L0 32 M64 128V64L48 48V37 M80 128V64L96 48V37 M96 128V80L144 32H480" />
+  <path d="M124 156H144 M184 156H192L240 204V528L348 636 M124 172H132 M172 172H176L224 220V544L332 652H348 M124 188H160L208 236V560L316 668H348 M124 204H144L192 252V576L300 684H348" />
+  <path d="M452 636H480 M452 652H480 M452 668H480 M452 684H480" />
+  <path d="M376 712V800L328 848H264 M224 848H168L56 960V1128 M392 712V816L344 864H288 M248 864H184L72 976V1128 M408 712V832L360 880H200L88 992V1128 M424 712V848L376 896H216L104 1008V1128" />
+  <path d="M0 1156H28 M0 1172H28 M0 1188H28 M0 1204H28" />
+  <path d="M132 1156H144 M184 1156H192L240 1204V1576L340 1676 M132 1172H136 M176 1172L224 1220V1592L324 1692H340 M132 1188H160L208 1236V1608L308 1708H340 M132 1204H144L192 1252V1624L292 1724H340" />
+  <path d="M444 1676H480 M444 1692H480 M444 1708H480 M444 1724H480 M368 1752V1840L320 1888V2000 M384 1752V1856L336 1904V2000 M400 1752V1872L352 1920V2000 M416 1752V1888L368 1936V2000" />
+  <use href="#chip" transform="translate(72 180)" />
+  <use href="#chip" transform="translate(400 660)" />
+  <use href="#chip" transform="translate(80 1180)" />
+  <use href="#chip" transform="translate(392 1700)" />
+  <use href="#resistor" x="144" y="156" />
+  <use href="#resistor" x="132" y="172" />
+  <use href="#resistor" x="224" y="848" />
+  <use href="#resistor" x="248" y="864" />
+  <use href="#resistor" x="144" y="1156" />
+  <use href="#resistor" x="136" y="1172" />
+  <circle cx="48" cy="32" r="5" /><circle cx="48" cy="32" r="1.5" stroke-width="1" />
+  <circle cx="96" cy="32" r="5" /><circle cx="96" cy="32" r="1.5" stroke-width="1" />
+</svg>

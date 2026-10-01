@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <g id="resistor"><rect x="0" y="-6" width="40" height="12" /></g>
+    <g id="capacitor"><path d="M0 0V20M-14 20H14M-14 30H14M0 30V58M-14 58H14M-10 64H10M-6 70H6" /></g>
+    <g id="amplifier">
+      <path d="M0-60V60L100 0Z" stroke-width="2.5" />
+      <path d="M10-20H22M16-26V-14M10 20H22" />
+    </g>
+    <g id="feedback">
+      <path d="M100 0H152V120H88M48 120H-32V20H0M-32 120V144M-32 184V200M-46 200H-18M-42 206H-22M-38 212H-26" />
+      <use href="#resistor" x="48" y="120" />
+      <rect x="-38" y="144" width="12" height="40" />
+      <circle cx="152" cy="0" r="3" fill="#f97316" stroke="none" />
+      <circle cx="-32" cy="120" r="3" fill="#f97316" stroke="none" />
+    </g>
+  </defs>
+  <path d="M0 140H80 M120 140H360 M512 160H560 M600 160H744L792 208V312L840 360H1040 M1192 380H1260 M1300 380H1500L1532 412H1600" />
+  <path d="M512 280V432L560 480H608 M648 480H736L784 528V584L840 640" />
+  <path d="M0 680H96 M136 680H304 M304 668L328 680L304 692Z M332 668V692 M332 680H560 M600 680H840" />
+  <path d="M940 660H1040 M1080 660H1104L1168 724H1328 M1368 724H1600" />
+  <use href="#amplifier" transform="translate(360 160)" />
+  <use href="#feedback" transform="translate(360 160)" />
+  <use href="#amplifier" transform="translate(1040 380)" />
+  <use href="#feedback" transform="translate(1040 380)" />
+  <use href="#amplifier" transform="translate(840 660)" />
+  <use href="#resistor" x="80" y="140" />
+  <use href="#resistor" x="560" y="160" />
+  <use href="#resistor" x="1260" y="380" />
+  <use href="#resistor" x="608" y="480" />
+  <use href="#resistor" x="96" y="680" />
+  <use href="#resistor" x="560" y="680" />
+  <use href="#resistor" x="1040" y="660" />
+  <use href="#resistor" x="1328" y="724" />
+  <use href="#capacitor" transform="translate(240 140)" />
+  <circle cx="240" cy="140" r="3" fill="#f97316" stroke="none" />
+  <use href="#capacitor" transform="translate(704 160)" />
+  <circle cx="704" cy="160" r="3" fill="#f97316" stroke="none" />
+  <use href="#capacitor" transform="translate(1376 380)" />
+  <circle cx="1376" cy="380" r="3" fill="#f97316" stroke="none" />
+  <use href="#capacitor" transform="translate(480 680)" />
+  <circle cx="480" cy="680" r="3" fill="#f97316" stroke="none" />
+  <use href="#capacitor" transform="translate(1200 724)" />
+  <circle cx="1200" cy="724" r="3" fill="#f97316" stroke="none" />
+</svg>

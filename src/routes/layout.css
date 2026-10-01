@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: Inter, 'Noto Sans JP', 'Yu Gothic', sans-serif;
+	--color-background: #282c34;
+	--color-surface: #2c313a;
+	--color-raised: #343a45;
+	--color-line: #4b5263;
+	--color-muted: #abb2bf;
+	--color-foreground: #e5e7ed;
+	--color-accent: #f97316;
+	--color-accent-hover: #fb923c;
+	--color-accent-soft: #3d3733;
+	--color-accent-ink: #21160e;
+}
+
+@font-face {
+	font-family: Inter;
+	src: url('/fonts/Inter-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Inter;
+	src: url('/fonts/Inter-Bold.otf') format('opentype');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@layer base {
+	html {
+		@apply scroll-pt-24 scroll-smooth bg-background font-sans text-foreground motion-reduce:scroll-auto;
+		font-synthesis: none;
+	}
+
+	a,
+	button {
+		@apply focus-visible:outline-2 focus-visible:outline-offset-6 focus-visible:outline-accent-hover;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	button {
+		@apply cursor-pointer;
+	}
+
+	svg {
+		@apply shrink-0;
+	}
+
+	::selection {
+		@apply bg-accent/30;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		animation: none !important;
+	}
+}

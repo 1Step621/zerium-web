@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 1100" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <g id="resistor"><rect x="0" y="-6" width="40" height="12" /></g>
+    <g id="capacitor"><path d="M0 0V20M-14 20H14M-14 30H14M0 30V58M-14 58H14M-10 64H10M-6 70H6" /></g>
+    <g id="amplifier">
+      <path d="M0-60V60L100 0Z" stroke-width="2.5" />
+      <path d="M10-20H22M16-26V-14M10 20H22" />
+    </g>
+    <g id="feedback">
+      <path d="M100 0H152V120H88M48 120H-32V20H0M-32 120V144M-32 184V200M-46 200H-18M-42 206H-22M-38 212H-26" />
+      <use href="#resistor" x="48" y="120" />
+      <rect x="-38" y="144" width="12" height="40" />
+      <circle cx="152" cy="0" r="3" fill="#f97316" stroke="none" />
+      <circle cx="-32" cy="120" r="3" fill="#f97316" stroke="none" />
+    </g>
+  </defs>
+  <path d="M0 180H80 M120 180H280 M432 200H500 M432 320V480L384 528H160L40 648V680H88 M240 700H280 M320 700H448L500 752" />
+  <path d="M0 1000H64 M104 1000H208 M208 988L232 1000L208 1012Z M236 988V1012 M236 1000H500 M240 820V928L312 1000" />
+  <use href="#amplifier" transform="translate(280 200)" />
+  <use href="#feedback" transform="translate(280 200)" />
+  <use href="#amplifier" transform="translate(88 700)" />
+  <use href="#feedback" transform="translate(88 700)" />
+  <use href="#resistor" x="80" y="180" />
+  <use href="#resistor" x="280" y="700" />
+  <use href="#resistor" x="64" y="1000" />
+  <use href="#capacitor" transform="translate(160 180)" />
+  <circle cx="160" cy="180" r="3" fill="#f97316" stroke="none" />
+  <use href="#capacitor" transform="translate(288 528)" />
+  <circle cx="288" cy="528" r="3" fill="#f97316" stroke="none" />
+  <use href="#capacitor" transform="translate(376 700)" />
+  <circle cx="376" cy="700" r="3" fill="#f97316" stroke="none" />
+  <use href="#capacitor" transform="translate(376 1000)" />
+  <circle cx="376" cy="1000" r="3" fill="#f97316" stroke="none" />
+</svg>
