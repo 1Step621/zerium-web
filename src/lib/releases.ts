@@ -2,9 +2,15 @@ export const REPOSITORY = 'https://github.com/1Step621/zerium';
 export const RELEASES_URL = `${REPOSITORY}/releases/latest`;
 
 const formats = {
-	windows: ['MSI'],
-	macos: ['DMG'],
-	linux: ['AppImage', 'DEB', 'RPM', 'TAR.XZ']
+	windows: { msi: 'MSI' },
+	macos: { pkg: 'PKG' },
+	linux: {
+		appimage: 'AppImage',
+		deb: 'deb',
+		rpm: 'rpm',
+		'pkg.tar.zst': 'Arch Linux',
+		'tar.xz': 'ELF binary'
+	}
 };
 export type Platform = keyof typeof formats;
 type Asset = { name: string; size: number };
@@ -21,9 +27,9 @@ export async function getLatestRelease(): Promise<Release | null> {
 		if (typeof tag_name !== 'string' || !Array.isArray(assets)) return null;
 
 		const downloads = (platform: Platform) =>
-			formats[platform].flatMap((format) =>
+			Object.entries(formats[platform]).flatMap(([extension, format]) =>
 				assets
-					.filter((asset) => asset.name.toLowerCase().endsWith(`.${format.toLowerCase()}`))
+					.filter((asset) => asset.name.toLowerCase().endsWith(`.${extension}`))
 					.map(({ name, size }) => ({
 						name,
 						size,

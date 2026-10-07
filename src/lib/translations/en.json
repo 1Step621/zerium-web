@@ -29,7 +29,6 @@
 	"installer": "Installer",
 	"apple": "Apple Silicon",
 	"recommended": "Recommended",
-	"otherFormats": "Other formats",
 	"allDownloads": "All downloads",
 	"development": "This software is still in development",
 	"developmentBody": "Updates may change the project format, and older projects may no longer open. Please avoid using Zerium for important projects.",

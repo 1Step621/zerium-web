@@ -7,10 +7,8 @@
 	use(() => data);
 </script>
 
-<svelte:head
-	><link rel="icon" href="/zerium.svg" type="image/svg+xml" /><meta
-		name="theme-color"
-		content="#282c34"
-	/></svelte:head
->
+<svelte:head>
+	<link rel="icon" href="/zerium.svg" type="image/svg+xml" />
+	<meta name="theme-color" content="#282c34" />
+</svelte:head>
 {@render children()}

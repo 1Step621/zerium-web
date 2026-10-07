@@ -29,7 +29,6 @@
 	"installer": "インストーラー",
 	"apple": "Apple Silicon",
 	"recommended": "おすすめ",
-	"otherFormats": "その他の形式",
 	"allDownloads": "すべての配布ファイル",
 	"development": "現在、開発中のソフトウェアです",
 	"developmentBody": "更新によってプロジェクト形式が変わり、以前のプロジェクトを開けなくなる場合があります。重要なプロジェクトでの使用は控えてください。",

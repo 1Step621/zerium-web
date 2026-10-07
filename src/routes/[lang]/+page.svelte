@@ -59,22 +59,15 @@
 </script>
 
 <svelte:head>
-	<title>{i18n.t('site.title')}</title><meta
-		name="description"
-		content={i18n.t('site.description')}
-	/>
-	<meta property="og:title" content={i18n.t('site.title')} /><meta
-		property="og:description"
-		content={i18n.t('site.description')}
-	/><meta property="og:type" content="website" /><meta
-		property="og:locale"
-		content={data.locale === 'ja' ? 'ja_JP' : 'en_US'}
-	/>
-	<link rel="alternate" hreflang="ja" href="/ja" /><link
-		rel="alternate"
-		hreflang="en"
-		href="/en"
-	/><link rel="alternate" hreflang="x-default" href="/" />
+	<title>{i18n.t('site.title')}</title>
+	<meta name="description" content={i18n.t('site.description')} />
+	<meta property="og:title" content={i18n.t('site.title')} />
+	<meta property="og:description" content={i18n.t('site.description')} />
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content={data.locale === 'ja' ? 'ja_JP' : 'en_US'} />
+	<link rel="alternate" hreflang="ja" href="/ja" />
+	<link rel="alternate" hreflang="en" href="/en" />
+	<link rel="alternate" hreflang="x-default" href="/" />
 </svelte:head>
 <div class="relative isolate min-h-screen">
 	<div
@@ -94,9 +87,9 @@
 			class="absolute -right-24 -bottom-32 h-96 w-96 rounded-full bg-accent/15 blur-3xl sm:right-1/4 sm:scale-150"
 		></div>
 	</div>
-	<a class="fixed -top-24 left-4 z-50 bg-accent p-3 text-accent-ink focus:top-3" href="#main"
-		>{i18n.t('site.skip')}</a
-	>
+	<a class="fixed -top-24 left-4 z-50 bg-accent p-3 text-accent-ink focus:top-3" href="#main">
+		{i18n.t('site.skip')}
+	</a>
 	<header class="relative z-10 border-b border-line/30 bg-background/50 backdrop-blur-xl">
 		<div
 			class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2.5 px-5 sm:h-20 sm:gap-6 sm:px-6 lg:px-8"
@@ -105,45 +98,46 @@
 				class="inline-flex items-center text-2xl leading-normal font-bold tracking-tighter sm:text-3xl"
 				href={`/${data.locale}`}
 				aria-label="Zerium"
-				><img
-					class="mr-2 size-8 sm:size-10"
-					src="/zerium.svg"
-					width="38"
-					height="38"
-					alt=""
-				/>Zerium</a
 			>
+				<img class="mr-2 size-8 sm:size-10" src="/zerium.svg" width="38" height="38" alt="" />
+				Zerium
+			</a>
 			<nav
 				class="flex items-center gap-4 text-sm text-muted sm:gap-4 lg:gap-8"
 				aria-label={i18n.t('site.navigation')}
 			>
 				<a
 					class="hidden sm:inline-flex sm:items-center sm:gap-2 sm:hover:text-accent-hover"
-					href="#features">{i18n.t('site.features')}</a
-				><a
+					href="#features"
+				>
+					{i18n.t('site.features')}
+				</a>
+				<a
 					href={REPOSITORY}
 					target="_blank"
 					rel="noreferrer"
 					class="inline-flex items-center gap-2 hover:text-accent-hover"
-					><IconBrandGithub size={20} stroke={1.6} aria-hidden="true" /><span
-						class="hidden sm:inline">GitHub</span
-					></a
 				>
+					<IconBrandGithub size={20} stroke={1.6} aria-hidden="true" />
+					<span class="hidden sm:inline">GitHub</span>
+				</a>
 				<a
 					class="inline-flex items-center gap-2 border-l border-line pl-4 hover:text-accent-hover sm:pl-6"
 					href={`/${otherLocale}`}
 					data-sveltekit-reload
 					data-sveltekit-preload-data="off"
 					aria-label={`${i18n.t('site.language')}: ${otherLocale === 'ja' ? '日本語' : 'English'}`}
-					><IconWorld size={16} stroke={1.6} aria-hidden="true" /><span
-						>{otherLocale === 'ja' ? '日本語' : 'EN'}</span
-					></a
 				>
+					<IconWorld size={16} stroke={1.6} aria-hidden="true" />
+					<span>{otherLocale === 'ja' ? '日本語' : 'EN'}</span>
+				</a>
 				<a
 					class="hidden min-h-10 items-center justify-center gap-2.5 rounded-lg bg-accent px-4 py-2 text-sm leading-relaxed font-bold text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover sm:inline-flex"
 					href="#download"
-					>{i18n.t('site.download')}<IconDownload size={16} stroke={1.6} aria-hidden="true" /></a
 				>
+					{i18n.t('site.download')}
+					<IconDownload size={16} stroke={1.6} aria-hidden="true" />
+				</a>
 			</nav>
 		</div>
 	</header>
@@ -155,10 +149,13 @@
 				<h1
 					class="mt-6 mb-6 text-4xl leading-tight font-bold tracking-tight sm:text-7xl lg:text-8xl"
 				>
-					A video editor<br /><span
+					A video editor
+					<br />
+					<span
 						class="bg-linear-to-r from-orange-200 via-accent-hover to-accent bg-clip-text text-transparent"
-						>with zero limits.</span
 					>
+						with zero limits.
+					</span>
 				</h1>
 				<p
 					class="mx-auto max-w-sm text-base leading-8 text-pretty text-muted sm:max-w-xl sm:text-lg"
@@ -169,17 +166,16 @@
 					<a
 						class="inline-flex min-h-12 items-center justify-center gap-2.5 rounded-lg bg-accent px-6 py-3.5 text-base leading-relaxed font-bold text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
 						href="#download"
-						><IconDownload size={20} stroke={1.6} aria-hidden="true" />{i18n.t('site.get')}</a
 					>
+						<IconDownload size={20} stroke={1.6} aria-hidden="true" />
+						{i18n.t('site.get')}
+					</a>
 				</div>
 				<p class="flex items-center justify-center gap-2 text-xs text-muted sm:gap-3">
-					<IconBrandWindows size={14} stroke={1.6} aria-hidden="true" /><IconBrandApple
-						size={14}
-						stroke={1.6}
-						aria-hidden="true"
-					/><IconTerminal2 size={14} stroke={1.6} aria-hidden="true" /><span class="ml-0.5"
-						>{i18n.t('site.platforms')}</span
-					>
+					<IconBrandWindows size={14} stroke={1.6} aria-hidden="true" />
+					<IconBrandApple size={14} stroke={1.6} aria-hidden="true" />
+					<IconTerminal2 size={14} stroke={1.6} aria-hidden="true" />
+					<span class="ml-0.5">{i18n.t('site.platforms')}</span>
 				</p>
 			</div>
 			<figure class="pointer-events-none relative mx-auto max-w-7xl">
@@ -206,13 +202,10 @@
 				{@const QualityIcon = qualityIcons[i]}
 				<span
 					class="flex items-center justify-center gap-3 text-sm text-muted sm:justify-start sm:gap-2 lg:gap-3"
-					><QualityIcon
-						class="text-accent-hover"
-						size={20}
-						stroke={1.6}
-						aria-hidden="true"
-					/>{label}</span
 				>
+					<QualityIcon class="text-accent-hover" size={20} stroke={1.6} aria-hidden="true" />
+					{label}
+				</span>
 			{/each}
 		</div>
 		<section id="features" class="relative isolate overflow-hidden">
@@ -292,8 +285,9 @@
 							class="my-8 flex items-center gap-3 rounded-lg border border-line bg-raised p-4 font-mono text-sm text-accent-hover"
 							aria-hidden="true"
 						>
-							<IconPlug size={32} stroke={1.6} aria-hidden="true" /><span>zerium.builtin</span
-							><IconPlus class="ml-auto" size={24} stroke={1.6} aria-hidden="true" />
+							<IconPlug size={32} stroke={1.6} aria-hidden="true" />
+							<span>zerium.builtin</span>
+							<IconPlus class="ml-auto" size={24} stroke={1.6} aria-hidden="true" />
 						</div>
 						<h3 class="mt-4 mb-2.5 text-xl leading-normal font-bold tracking-tight sm:text-2xl">
 							{i18n.t('site.pluginTitle')}
@@ -304,12 +298,10 @@
 							href={`${REPOSITORY}/blob/main/docs/plugin.md`}
 							target="_blank"
 							rel="noreferrer"
-							>{i18n.t('site.pluginLink')}<IconExternalLink
-								size={15}
-								stroke={1.6}
-								aria-hidden="true"
-							/></a
 						>
+							{i18n.t('site.pluginLink')}
+							<IconExternalLink size={15} stroke={1.6} aria-hidden="true" />
+						</a>
 					</article>
 					<article
 						class="relative grid gap-6 overflow-hidden rounded-xl border border-line/50 bg-surface/70 p-6 backdrop-blur-xl sm:col-span-2 sm:grid-cols-2 sm:items-center sm:gap-8 sm:p-8"
@@ -364,10 +356,14 @@
 								class="relative overflow-hidden rounded-lg border border-line/70 bg-background/70 p-3"
 							>
 								<div class="mb-2 flex justify-between font-mono text-xs text-muted/70">
-									<span>00:00</span><span>00:05</span><span>00:10</span>
+									<span>00:00</span>
+									<span>00:05</span>
+									<span>00:10</span>
 								</div>
 								<div class="mb-2 flex justify-between border-t border-line/60">
-									{#each Array(13) as _}<div class="h-1.5 w-px bg-line/60"></div>{/each}
+									{#each Array(13) as _}
+										<div class="h-1.5 w-px bg-line/60"></div>
+									{/each}
 								</div>
 								<div class="grid grid-cols-12 gap-1">
 									{#each [0, 1] as copy}
@@ -419,25 +415,31 @@
 				<div
 					class="-mt-2.5 mb-8 flex flex-wrap items-center justify-center gap-3 text-xs text-muted sm:gap-5"
 				>
-					{#if release}<span
+					{#if release}
+						<span
 							class="inline-flex items-center gap-2 rounded-sm border border-line px-2.5 py-1.5"
-							>{i18n.t('site.latest')}
-							<strong class="font-normal text-foreground">{release.tag}</strong></span
-						><a
+						>
+							{i18n.t('site.latest')}
+							<strong class="font-normal text-foreground">{release.tag}</strong>
+						</span>
+						<a
 							class="flex items-center gap-2 hover:text-accent-hover"
 							href={RELEASES_URL}
 							target="_blank"
 							rel="noreferrer"
-							>{i18n.t('site.releases')}<IconExternalLink
-								size={14}
-								stroke={1.6}
-								aria-hidden="true"
-							/></a
-						>{:else if release === undefined}<p role="status">
+						>
+							{i18n.t('site.releases')}
+							<IconExternalLink size={14} stroke={1.6} aria-hidden="true" />
+						</a>
+					{:else if release === undefined}
+						<p role="status">
 							{i18n.t('site.loadingRelease')}
-						</p>{:else}<p class="text-center text-sm leading-6" role="status">
+						</p>
+					{:else}
+						<p class="text-center text-sm leading-6" role="status">
 							{i18n.t('site.fetchingFailed')}
-						</p>{/if}
+						</p>
+					{/if}
 				</div>
 				<div class="grid grid-cols-1 gap-3.5 sm:grid-cols-3 sm:gap-3 lg:gap-4">
 					{#each platforms as platform}
@@ -452,49 +454,53 @@
 							<div
 								class="float-left mr-4 flex h-16 items-start justify-between text-foreground sm:float-none sm:mr-0 sm:h-9 sm:items-center"
 							>
-								<PlatformIcon
-									size={32}
-									stroke={1.6}
-									aria-hidden="true"
-								/>{#if detectedPlatform === platform}<span
+								<PlatformIcon size={32} stroke={1.6} aria-hidden="true" />
+								{#if detectedPlatform === platform}
+									<span
 										class="absolute right-6 rounded-sm border border-accent/30 bg-accent-soft px-2 py-1 text-xs text-accent-hover sm:static"
-										>{i18n.t('site.recommended')}</span
-									>{/if}
+									>
+										{i18n.t('site.recommended')}
+									</span>
+								{/if}
 							</div>
 							<h3 class="mb-1 text-2xl leading-normal font-bold tracking-tight sm:mt-5 sm:text-2xl">
 								{platform === 'windows' ? 'Windows' : platform === 'macos' ? 'macOS' : 'Linux'}
 							</h3>
 							<p class="mb-6 text-sm text-muted sm:mb-6">
-								{platform === 'macos' ? i18n.t('site.apple') : 'x86_64'}{asset
-									? ` · ${asset.format}`
-									: ''}
+								{platform === 'macos' ? i18n.t('site.apple') : 'x86_64'}
+								{asset ? ` · ${asset.format}` : ''}
 							</p>
 							<a
 								class="clear-both inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-lg bg-accent px-3 py-3 text-sm leading-relaxed font-bold text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
 								href={asset?.url || RELEASES_URL}
-								><IconDownload size={18} stroke={1.6} aria-hidden="true" />{asset
-									? i18n.t('site.download')
-									: i18n.t('site.platformFallback')}</a
 							>
+								<IconDownload size={18} stroke={1.6} aria-hidden="true" />
+								{asset ? i18n.t('site.download') : i18n.t('site.platformFallback')}
+							</a>
 							<div class="flex min-h-8 justify-between pt-3 text-xs text-muted">
-								{#if asset}<span>{formatSize(asset.size)}</span><span
-										>{asset.format === 'MSI' ? i18n.t('site.installer') : asset.format}</span
-									>{:else}<span>GitHub Releases</span>{/if}
+								{#if asset}
+									<span>{formatSize(asset.size)}</span>
+									<span>
+										{asset.format === 'MSI' || asset.format === 'PKG'
+											? i18n.t('site.installer')
+											: asset.format}
+									</span>
+								{:else}
+									<span>GitHub Releases</span>
+								{/if}
 							</div>
-							{#if alternatives.length}<div
+							{#if alternatives.length}
+								<div
 									class="mt-4 flex flex-wrap items-center gap-3 border-t border-line/50 pt-4 text-xs"
 								>
-									<span class="text-muted">{i18n.t('site.otherFormats')}</span
-									>{#each alternatives as alternative}<a
-											class="flex items-center gap-1 hover:text-accent"
-											href={alternative.url}
-											>{alternative.format}<IconDownload
-												size={13}
-												stroke={1.6}
-												aria-hidden="true"
-											/></a
-										>{/each}
-								</div>{/if}
+									{#each alternatives as alternative}
+										<a class="flex items-center gap-1 hover:text-accent" href={alternative.url}>
+											{alternative.format}
+											<IconDownload size={13} stroke={1.6} aria-hidden="true" />
+										</a>
+									{/each}
+								</div>
+							{/if}
 						</article>
 					{/each}
 				</div>
@@ -506,23 +512,19 @@
 						href={RELEASES_URL}
 						target="_blank"
 						rel="noreferrer"
-						>{i18n.t('site.allDownloads')}<IconArrowRight
-							size={17}
-							stroke={1.6}
-							aria-hidden="true"
-						/></a
 					>
+						{i18n.t('site.allDownloads')}
+						<IconArrowRight size={17} stroke={1.6} aria-hidden="true" />
+					</a>
 					<a
 						class="inline-flex items-center gap-2.5 text-sm font-normal transition-colors duration-200 hover:text-accent-hover"
 						href={`${REPOSITORY}#nix`}
 						target="_blank"
 						rel="noreferrer"
-						>{i18n.t('site.nixGuide')}<IconExternalLink
-							size={14}
-							stroke={1.6}
-							aria-hidden="true"
-						/></a
 					>
+						{i18n.t('site.nixGuide')}
+						<IconExternalLink size={14} stroke={1.6} aria-hidden="true" />
+					</a>
 				</div>
 				<aside
 					class="relative flex items-start gap-4 overflow-hidden rounded-xl border border-line/50 bg-surface/70 p-6 backdrop-blur-xl sm:p-8"
@@ -534,8 +536,9 @@
 						aria-hidden="true"
 					/>
 					<div>
-						<strong class="text-sm font-bold text-accent-hover">{i18n.t('site.development')}</strong
-						>
+						<strong class="text-sm font-bold text-accent-hover">
+							{i18n.t('site.development')}
+						</strong>
 						<p class="mt-1 text-sm leading-6 text-muted">{i18n.t('site.developmentBody')}</p>
 					</div>
 				</aside>
@@ -549,8 +552,10 @@
 			<a
 				class="inline-flex items-center text-2xl leading-normal font-bold tracking-tighter"
 				href={`/${data.locale}`}
-				><img class="mr-2 size-8" src="/zerium.svg" width="30" height="30" alt="" />Zerium</a
 			>
+				<img class="mr-2 size-8" src="/zerium.svg" width="30" height="30" alt="" />
+				Zerium
+			</a>
 			<p class="mt-2 text-xs leading-6 text-muted">{i18n.t('site.footerLine')}</p>
 		</div>
 		<div
@@ -561,13 +566,18 @@
 				href={REPOSITORY}
 				target="_blank"
 				rel="noreferrer"
-				><IconBrandGithub size={16} stroke={1.6} aria-hidden="true" />{i18n.t('site.source')}</a
-			><a
+			>
+				<IconBrandGithub size={16} stroke={1.6} aria-hidden="true" />
+				{i18n.t('site.source')}
+			</a>
+			<a
 				class="flex items-center gap-2 text-sm text-muted hover:text-accent-hover"
 				href={`${REPOSITORY}/blob/main/LICENSE`}
 				target="_blank"
-				rel="noreferrer">{i18n.t('site.license')}</a
+				rel="noreferrer"
 			>
+				{i18n.t('site.license')}
+			</a>
 		</div>
 	</footer>
 </div>
