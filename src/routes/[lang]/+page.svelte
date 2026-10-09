@@ -281,12 +281,17 @@
 					<article
 						class="relative overflow-hidden rounded-xl border border-line/50 bg-surface/70 p-6 backdrop-blur-xl sm:col-start-1 sm:row-start-2 sm:p-8 lg:col-auto lg:row-auto"
 					>
+						<span
+							class="absolute top-4 right-4 inline-flex rounded-sm border border-accent/30 bg-accent-soft px-2 py-1 text-xs text-accent-hover sm:top-5 sm:right-5"
+						>
+							{i18n.t('site.pluginStatus')}
+						</span>
 						<div
 							class="my-8 flex items-center gap-3 rounded-lg border border-line bg-raised p-4 font-mono text-sm text-accent-hover"
 							aria-hidden="true"
 						>
 							<IconPlug size={32} stroke={1.6} aria-hidden="true" />
-							<span>zerium.builtin</span>
+							<span>zerium.contrib</span>
 							<IconPlus class="ml-auto" size={24} stroke={1.6} aria-hidden="true" />
 						</div>
 						<h3 class="mt-4 mb-2.5 text-xl leading-normal font-bold tracking-tight sm:text-2xl">
