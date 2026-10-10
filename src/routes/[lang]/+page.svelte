@@ -475,11 +475,13 @@
 				</div>
 				<div
 					id="platform-download"
-					class="mx-auto mt-4 max-w-2xl overflow-hidden rounded-xl border border-line/50 bg-surface/70 p-6 backdrop-blur-xl sm:p-7"
+					class="relative mx-auto mt-4 max-w-2xl overflow-hidden rounded-xl border border-line/50 bg-surface/70 p-6 backdrop-blur-xl sm:p-8"
 				>
 					<div class="flex flex-wrap items-center justify-between gap-4">
 						<div>
-							<h3 class="text-xl font-bold">{selectedDownload.name}</h3>
+							<h3 class="text-xl leading-normal font-bold tracking-tight sm:text-2xl">
+								{selectedDownload.name}
+							</h3>
 							<p class="mt-1 text-sm text-muted">
 								{selectedPlatform === 'macos' ? i18n.t('site.apple') : 'x86_64'}
 								{#if selectedPlatform !== 'linux'}
