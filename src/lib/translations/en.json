@@ -23,13 +23,11 @@
 	"sceneExample": "Scene",
 	"pluginLink": "Plugin development guide",
 	"downloadTitle": "Download",
-	"latest": "Latest release",
 	"releases": "Release notes",
-	"fetchingFailed": "Could not load release information. You can download the latest version from GitHub.",
-	"platformFallback": "View available downloads",
-	"installer": "Installer",
+	"installCommand": "Install command",
+	"copyCommand": "Copy command",
+	"downloadAppImage": "Download AppImage",
 	"apple": "Apple Silicon",
-	"recommended": "Recommended",
 	"allDownloads": "All downloads",
 	"development": "Currently available in beta",
 	"developmentBody": "Updates may change the project format, and older projects may no longer open. Please avoid using Zerium for important projects.",
@@ -41,6 +39,5 @@
 	"stripPlugins": "Plugin extensions",
 	"stripPlatforms": "Cross-platform",
 	"stripFree": "Always free",
-	"navigation": "Main navigation",
-	"loadingRelease": "Loading release information…"
+	"navigation": "Main navigation"
 }

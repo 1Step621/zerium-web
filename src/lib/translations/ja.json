@@ -23,13 +23,11 @@
 	"sceneExample": "シーン",
 	"pluginLink": "プラグイン開発ガイド",
 	"downloadTitle": "ダウンロード",
-	"latest": "最新リリース",
 	"releases": "リリースノート",
-	"fetchingFailed": "リリース情報を取得できませんでした。GitHub から最新版をダウンロードできます。",
-	"platformFallback": "ダウンロード一覧を開く",
-	"installer": "インストーラー",
+	"installCommand": "インストールコマンド",
+	"copyCommand": "コマンドをコピー",
+	"downloadAppImage": "AppImage をダウンロード",
 	"apple": "Apple Silicon",
-	"recommended": "おすすめ",
 	"allDownloads": "すべての配布ファイル",
 	"development": "現在ベータ版として公開しています",
 	"developmentBody": "更新によってプロジェクト形式が変わり、以前のプロジェクトを開けなくなる場合があります。重要なプロジェクトでの使用は控えてください。",
@@ -41,6 +39,5 @@
 	"stripPlugins": "プラグイン拡張",
 	"stripPlatforms": "マルチプラットフォーム",
 	"stripFree": "ずっと無料",
-	"navigation": "メインナビゲーション",
-	"loadingRelease": "リリース情報を読み込み中…"
+	"navigation": "メインナビゲーション"
 }

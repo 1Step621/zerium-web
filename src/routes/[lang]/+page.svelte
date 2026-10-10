@@ -7,21 +7,13 @@
 	import circuitSchematic from '$lib/assets/circuit.svg';
 	import circuitSchematicMobile from '$lib/assets/circuit-mobile.svg';
 	import {
-		REPOSITORY,
-		RELEASES_URL,
-		formatSize,
-		getLatestRelease,
-		type Platform,
-		type Release
-	} from '$lib/releases';
-	import {
-		IconAlertCircle,
 		IconArrowDown,
 		IconArrowRight,
 		IconBrandApple,
 		IconBrandGithub,
 		IconBrandWindows,
 		IconCode,
+		IconCopy,
 		IconCpu,
 		IconDownload,
 		IconExternalLink,
@@ -37,24 +29,54 @@
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
 	const i18n = get();
-	const platforms: Platform[] = ['windows', 'macos', 'linux'];
-	const platformIcons = { windows: IconBrandWindows, macos: IconBrandApple, linux: IconTerminal2 };
+	const REPOSITORY = 'https://github.com/1Step621/zerium';
+	const RELEASES_URL = `${REPOSITORY}/releases/latest`;
+	const LINUX_INSTALL_COMMAND = `curl -fsSL ${RELEASES_URL}/download/install.sh | sh`;
+	const platforms = [
+		{
+			id: 'windows',
+			name: 'Windows',
+			file: 'zerium-win-x86_64.msi',
+			format: 'MSI',
+			icon: IconBrandWindows
+		},
+		{
+			id: 'macos',
+			name: 'macOS',
+			file: 'zerium-osx-aarch64-Setup.pkg',
+			format: 'PKG',
+			icon: IconBrandApple
+		},
+		{
+			id: 'linux',
+			name: 'Linux',
+			file: 'zerium-linux-x86_64.AppImage',
+			format: 'AppImage',
+			icon: IconTerminal2
+		}
+	] as const;
+	type Platform = (typeof platforms)[number]['id'];
 	const qualityIcons = [IconCpu, IconPlug, IconWorld, IconCode];
-	let detectedPlatform = $state<Platform | null>(null);
+	let selectedPlatform = $state<Platform>('linux');
+	const selectedDownload = $derived(
+		platforms.find((platform) => platform.id === selectedPlatform)!
+	);
 	const otherLocale = $derived(data.locale === 'ja' ? 'en' : 'ja');
-	let release = $state<Release | null>();
+
+	async function copyInstallCommand() {
+		try {
+			await navigator.clipboard.writeText(LINUX_INSTALL_COMMAND);
+		} catch (error) {
+			console.error(error);
+		}
+	}
 	onMount(() => {
 		const ua = navigator.userAgent;
-		detectedPlatform = /Windows/i.test(ua)
+		selectedPlatform = /Windows/i.test(ua)
 			? 'windows'
 			: /Macintosh|Mac OS X/i.test(ua) && !/iPhone|iPad/i.test(ua)
 				? 'macos'
-				: /Linux/i.test(ua) && !/Android/i.test(ua)
-					? 'linux'
-					: null;
-	});
-	onMount(() => {
-		void getLatestRelease().then((result) => (release = result));
+				: 'linux';
 	});
 </script>
 
@@ -420,94 +442,88 @@
 				<div
 					class="-mt-2.5 mb-8 flex flex-wrap items-center justify-center gap-3 text-xs text-muted sm:gap-5"
 				>
-					{#if release}
-						<span
-							class="inline-flex items-center gap-2 rounded-sm border border-line px-2.5 py-1.5"
-						>
-							{i18n.t('site.latest')}
-							<strong class="font-normal text-foreground">{release.tag}</strong>
-						</span>
-						<a
-							class="flex items-center gap-2 hover:text-accent-hover"
-							href={RELEASES_URL}
-							target="_blank"
-							rel="noreferrer"
-						>
-							{i18n.t('site.releases')}
-							<IconExternalLink size={14} stroke={1.6} aria-hidden="true" />
-						</a>
-					{:else if release === undefined}
-						<p role="status">
-							{i18n.t('site.loadingRelease')}
-						</p>
-					{:else}
-						<p class="text-center text-sm leading-6" role="status">
-							{i18n.t('site.fetchingFailed')}
-						</p>
-					{/if}
+					<a
+						class="flex items-center gap-2 hover:text-accent-hover"
+						href={RELEASES_URL}
+						target="_blank"
+						rel="noreferrer"
+					>
+						{i18n.t('site.releases')}
+						<IconExternalLink size={14} stroke={1.6} aria-hidden="true" />
+					</a>
 				</div>
-				<div class="grid grid-cols-1 gap-3.5 sm:grid-cols-3 sm:gap-3 lg:gap-4">
+				<div
+					class="mx-auto grid w-fit max-w-full grid-cols-3 gap-1 rounded-xl border border-line/50 bg-surface/70 p-1 backdrop-blur-xl"
+				>
 					{#each platforms as platform}
-						{@const PlatformIcon = platformIcons[platform]}
-						{@const [asset, ...alternatives] = release?.downloads[platform] ?? []}
-						<article
+						{@const PlatformIcon = platform.icon}
+						<button
 							class={[
-								'relative overflow-hidden rounded-xl border bg-surface/70 p-6 backdrop-blur-xl transition-colors duration-200 sm:static sm:px-5 sm:py-6 lg:p-7',
-								detectedPlatform === platform ? 'border-accent' : 'border-line/50'
+								'flex min-h-10 min-w-0 items-center justify-center gap-1.5 rounded-lg px-2 py-2 text-xs font-semibold transition-colors duration-200 sm:gap-2 sm:px-4 sm:text-sm',
+								selectedPlatform === platform.id
+									? 'bg-accent-soft text-accent-hover'
+									: 'text-muted hover:bg-raised/50 hover:text-foreground'
 							]}
+							aria-pressed={selectedPlatform === platform.id}
+							aria-controls="platform-download"
+							onclick={() => (selectedPlatform = platform.id)}
 						>
-							<div
-								class="float-left mr-4 flex h-16 items-start justify-between text-foreground sm:float-none sm:mr-0 sm:h-9 sm:items-center"
-							>
-								<PlatformIcon size={32} stroke={1.6} aria-hidden="true" />
-								{#if detectedPlatform === platform}
-									<span
-										class="absolute right-6 rounded-sm border border-accent/30 bg-accent-soft px-2 py-1 text-xs text-accent-hover sm:static"
-									>
-										{i18n.t('site.recommended')}
-									</span>
+							<PlatformIcon class="shrink-0" size={18} stroke={1.6} aria-hidden="true" />
+							<span>{platform.name}</span>
+						</button>
+					{/each}
+				</div>
+				<div
+					id="platform-download"
+					class="mx-auto mt-4 max-w-2xl overflow-hidden rounded-xl border border-line/50 bg-surface/70 p-6 backdrop-blur-xl sm:p-7"
+				>
+					<div class="flex flex-wrap items-center justify-between gap-4">
+						<div>
+							<h3 class="text-xl font-bold">{selectedDownload.name}</h3>
+							<p class="mt-1 text-sm text-muted">
+								{selectedPlatform === 'macos' ? i18n.t('site.apple') : 'x86_64'}
+								{#if selectedPlatform !== 'linux'}
+									· {selectedDownload.format}
 								{/if}
-							</div>
-							<h3 class="mb-1 text-2xl leading-normal font-bold tracking-tight sm:mt-5 sm:text-2xl">
-								{platform === 'windows' ? 'Windows' : platform === 'macos' ? 'macOS' : 'Linux'}
-							</h3>
-							<p class="mb-6 text-sm text-muted sm:mb-6">
-								{platform === 'macos' ? i18n.t('site.apple') : 'x86_64'}
-								{asset ? ` · ${asset.format}` : ''}
 							</p>
+						</div>
+						{#if selectedPlatform === 'linux'}
 							<a
-								class="clear-both inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-lg bg-accent px-3 py-3 text-sm leading-relaxed font-bold text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
-								href={asset?.url || RELEASES_URL}
+								class="inline-flex items-center gap-2 text-sm text-accent-hover hover:text-accent"
+								href={`${RELEASES_URL}/download/${selectedDownload.file}`}
+							>
+								{i18n.t('site.downloadAppImage')}
+								<IconDownload size={16} stroke={1.6} aria-hidden="true" />
+							</a>
+						{:else}
+							<a
+								class="inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-lg bg-accent px-6 py-3 text-sm leading-relaxed font-bold text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover sm:w-auto"
+								href={`${RELEASES_URL}/download/${selectedDownload.file}`}
 							>
 								<IconDownload size={18} stroke={1.6} aria-hidden="true" />
-								{asset ? i18n.t('site.download') : i18n.t('site.platformFallback')}
+								{i18n.t('site.download')}
 							</a>
-							<div class="flex min-h-8 justify-between pt-3 text-xs text-muted">
-								{#if asset}
-									<span>{formatSize(asset.size)}</span>
-									<span>
-										{asset.format === 'MSI' || asset.format === 'PKG'
-											? i18n.t('site.installer')
-											: asset.format}
-									</span>
-								{:else}
-									<span>GitHub Releases</span>
-								{/if}
-							</div>
-							{#if alternatives.length}
-								<div
-									class="mt-4 flex flex-wrap items-center gap-3 border-t border-line/50 pt-4 text-xs"
-								>
-									{#each alternatives as alternative}
-										<a class="flex items-center gap-1 hover:text-accent" href={alternative.url}>
-											{alternative.format}
-											<IconDownload size={13} stroke={1.6} aria-hidden="true" />
-										</a>
-									{/each}
-								</div>
-							{/if}
-						</article>
-					{/each}
+						{/if}
+					</div>
+					{#if selectedPlatform === 'linux'}
+						<div class="mt-5 flex flex-col gap-3 sm:flex-row">
+							<input
+								class="block h-12 w-full min-w-0 rounded-lg border border-line/50 bg-background/70 px-3 font-mono text-xs text-foreground focus-visible:outline-2 focus-visible:outline-accent-hover sm:flex-1"
+								type="text"
+								readonly
+								value={LINUX_INSTALL_COMMAND}
+								aria-label={i18n.t('site.installCommand')}
+								onfocus={(event) => event.currentTarget.select()}
+							/>
+							<button
+								class="inline-flex min-h-12 shrink-0 items-center justify-center gap-2.5 rounded-lg bg-accent px-5 py-3 text-sm leading-relaxed font-bold text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
+								onclick={copyInstallCommand}
+							>
+								<IconCopy size={18} stroke={1.6} aria-hidden="true" />
+								{i18n.t('site.copyCommand')}
+							</button>
+						</div>
+					{/if}
 				</div>
 				<div
 					class="mt-6 mb-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-muted"
@@ -531,21 +547,9 @@
 						<IconExternalLink size={14} stroke={1.6} aria-hidden="true" />
 					</a>
 				</div>
-				<aside
-					class="relative flex items-start gap-4 overflow-hidden rounded-xl border border-line/50 bg-surface/70 p-6 backdrop-blur-xl sm:p-8"
-				>
-					<IconAlertCircle
-						class="mt-1 flex size-5 shrink-0 items-center justify-center text-xs font-bold text-accent-hover"
-						size={20}
-						stroke={1.6}
-						aria-hidden="true"
-					/>
-					<div>
-						<strong class="text-sm font-bold text-accent-hover">
-							{i18n.t('site.development')}
-						</strong>
-						<p class="mt-1 text-sm leading-6 text-muted">{i18n.t('site.developmentBody')}</p>
-					</div>
+				<aside class="mx-auto max-w-2xl text-sm leading-5 text-muted">
+					<p class="font-bold">{i18n.t('site.development')}</p>
+					<p class="mt-1">{i18n.t('site.developmentBody')}</p>
 				</aside>
 			</div>
 		</section>
