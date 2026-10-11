@@ -26,6 +26,7 @@
 	"releases": "Release notes",
 	"installCommand": "Install command",
 	"copyCommand": "Copy command",
+	"commandCopied": "Copied",
 	"downloadAppImage": "Download AppImage",
 	"apple": "Apple Silicon",
 	"allDownloads": "All downloads",

@@ -26,6 +26,7 @@
 	"releases": "リリースノート",
 	"installCommand": "インストールコマンド",
 	"copyCommand": "コマンドをコピー",
+	"commandCopied": "コピー済み",
 	"downloadAppImage": "AppImage をダウンロード",
 	"apple": "Apple Silicon",
 	"allDownloads": "すべての配布ファイル",

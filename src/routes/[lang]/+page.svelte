@@ -12,6 +12,7 @@
 		IconBrandApple,
 		IconBrandGithub,
 		IconBrandWindows,
+		IconCheck,
 		IconCode,
 		IconCopy,
 		IconCpu,
@@ -62,11 +63,20 @@
 		platforms.find((platform) => platform.id === selectedPlatform)!
 	);
 	const otherLocale = $derived(data.locale === 'ja' ? 'en' : 'ja');
+	let commandCopied = $state(false);
+
+	$effect(() => {
+		if (!commandCopied) return;
+		const timeout = setTimeout(() => (commandCopied = false), 2000);
+		return () => clearTimeout(timeout);
+	});
 
 	async function copyInstallCommand() {
 		try {
 			await navigator.clipboard.writeText(LINUX_INSTALL_COMMAND);
+			commandCopied = true;
 		} catch (error) {
+			commandCopied = false;
 			console.error(error);
 		}
 	}
@@ -508,9 +518,9 @@
 						{/if}
 					</div>
 					{#if selectedPlatform === 'linux'}
-						<div class="mt-5 flex flex-col gap-3 sm:flex-row">
+						<div class="mt-5 flex gap-3">
 							<input
-								class="block h-12 w-full min-w-0 rounded-lg border border-line/50 bg-background/70 px-3 font-mono text-xs text-foreground focus-visible:outline-2 focus-visible:outline-accent-hover sm:flex-1"
+								class="block h-12 min-w-0 flex-1 rounded-lg border border-line/50 bg-background/70 px-3 font-mono text-sm text-foreground focus-visible:outline-2 focus-visible:outline-accent-hover"
 								type="text"
 								readonly
 								value={LINUX_INSTALL_COMMAND}
@@ -518,11 +528,16 @@
 								onfocus={(event) => event.currentTarget.select()}
 							/>
 							<button
-								class="inline-flex min-h-12 shrink-0 items-center justify-center gap-2.5 rounded-lg bg-accent px-5 py-3 text-sm leading-relaxed font-bold text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
+								class="inline-flex size-12 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-ink transition duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
+								aria-label={i18n.t(commandCopied ? 'site.commandCopied' : 'site.copyCommand')}
+								title={i18n.t(commandCopied ? 'site.commandCopied' : 'site.copyCommand')}
 								onclick={copyInstallCommand}
 							>
-								<IconCopy size={18} stroke={1.6} aria-hidden="true" />
-								{i18n.t('site.copyCommand')}
+								{#if commandCopied}
+									<IconCheck size={20} stroke={1.6} aria-hidden="true" />
+								{:else}
+									<IconCopy size={20} stroke={1.6} aria-hidden="true" />
+								{/if}
 							</button>
 						</div>
 					{/if}
