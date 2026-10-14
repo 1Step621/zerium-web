@@ -90,6 +90,17 @@
 	});
 </script>
 
+{#snippet brand()}
+	<a
+		class="inline-flex items-center text-2xl leading-normal font-bold tracking-tighter sm:text-3xl"
+		href={`/${data.locale}`}
+		aria-label="Zerium"
+	>
+		<img class="mr-2 size-8 sm:size-10" src="/zerium.svg" width="40" height="40" alt="" />
+		Zerium
+	</a>
+{/snippet}
+
 <svelte:head>
 	<title>{i18n.t('site.title')}</title>
 	<meta name="description" content={i18n.t('site.description')} />
@@ -126,20 +137,13 @@
 		<div
 			class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2.5 px-5 sm:h-20 sm:gap-6 sm:px-6 lg:px-8"
 		>
-			<a
-				class="inline-flex items-center text-2xl leading-normal font-bold tracking-tighter sm:text-3xl"
-				href={`/${data.locale}`}
-				aria-label="Zerium"
-			>
-				<img class="mr-2 size-8 sm:size-10" src="/zerium.svg" width="38" height="38" alt="" />
-				Zerium
-			</a>
+			{@render brand()}
 			<nav
 				class="flex items-center gap-4 text-sm text-muted sm:gap-4 lg:gap-8"
 				aria-label={i18n.t('site.navigation')}
 			>
 				<a
-					class="hidden sm:inline-flex sm:items-center sm:gap-2 sm:hover:text-accent-hover"
+					class="hidden transition-colors duration-200 sm:inline-flex sm:items-center sm:gap-2 sm:hover:text-accent-hover"
 					href="#features"
 				>
 					{i18n.t('site.features')}
@@ -148,13 +152,13 @@
 					href={REPOSITORY}
 					target="_blank"
 					rel="noreferrer"
-					class="inline-flex items-center gap-2 hover:text-accent-hover"
+					class="inline-flex items-center gap-2 transition-colors duration-200 hover:text-accent-hover"
 				>
 					<IconBrandGithub size={20} stroke={1.6} aria-hidden="true" />
 					<span class="hidden sm:inline">GitHub</span>
 				</a>
 				<a
-					class="inline-flex items-center gap-2 border-l border-line pl-4 hover:text-accent-hover sm:pl-6"
+					class="inline-flex items-center gap-2 border-l border-line pl-4 transition-colors duration-200 hover:text-accent-hover sm:pl-6"
 					href={`/${otherLocale}`}
 					data-sveltekit-reload
 					data-sveltekit-preload-data="off"
@@ -245,10 +249,10 @@
 				class="pointer-events-none absolute inset-0 -z-10 overflow-hidden text-accent"
 				aria-hidden="true"
 			>
-				<picture class="absolute top-0 right-0 block w-full sm:min-w-6xl">
+				<picture class="absolute top-0 left-1/2 block h-full w-full -translate-x-1/2 sm:min-w-6xl">
 					<source media="(min-width: 640px)" srcset={pcbPattern} width="1600" height="1080" />
 					<img
-						class="h-auto w-full opacity-20"
+						class="block h-full w-full object-cover object-top opacity-20"
 						src={pcbPatternMobile}
 						alt=""
 						width="480"
@@ -428,12 +432,12 @@
 			class="relative overflow-hidden border-t border-line/50 pt-16 pb-11 sm:pt-20 sm:pb-16"
 		>
 			<picture
-				class="pointer-events-none absolute top-0 right-0 block w-full sm:min-w-5xl"
+				class="pointer-events-none absolute top-0 left-1/2 block h-full w-full -translate-x-1/2 sm:min-w-5xl"
 				aria-hidden="true"
 			>
 				<source media="(min-width: 640px)" srcset={circuitSchematic} width="1600" height="800" />
 				<img
-					class="h-auto w-full opacity-25"
+					class="block h-full w-full object-cover object-top opacity-25"
 					src={circuitSchematicMobile}
 					alt=""
 					width="500"
@@ -571,39 +575,36 @@
 			</div>
 		</section>
 	</main>
-	<footer
-		class="mx-auto flex max-w-6xl flex-col justify-between gap-6 px-5 py-8 sm:flex-row sm:gap-8 sm:px-6 sm:py-10 lg:px-8"
-	>
-		<div>
-			<a
-				class="inline-flex items-center text-2xl leading-normal font-bold tracking-tighter"
-				href={`/${data.locale}`}
-			>
-				<img class="mr-2 size-8" src="/zerium.svg" width="30" height="30" alt="" />
-				Zerium
-			</a>
-			<p class="mt-2 text-xs leading-6 text-muted">{i18n.t('site.footerLine')}</p>
-		</div>
+	<footer class="relative border-t border-line/30 bg-background/50 backdrop-blur-xl">
 		<div
-			class="flex max-w-md flex-wrap items-center justify-start gap-x-6 gap-y-2 text-left sm:justify-end sm:text-right"
+			class="mx-auto flex max-w-6xl flex-col justify-between gap-6 px-5 py-8 sm:flex-row sm:items-center sm:gap-8 sm:px-6 sm:py-10 lg:px-8"
 		>
-			<a
-				class="flex items-center gap-2 text-sm text-muted hover:text-accent-hover"
-				href={REPOSITORY}
-				target="_blank"
-				rel="noreferrer"
+			<div class="shrink-0">
+				{@render brand()}
+				<p class="mt-2 text-xs leading-6 text-muted">{i18n.t('site.footerLine')}</p>
+			</div>
+			<nav
+				class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted sm:justify-end lg:gap-x-8"
+				aria-label={i18n.t('site.navigation')}
 			>
-				<IconBrandGithub size={16} stroke={1.6} aria-hidden="true" />
-				{i18n.t('site.source')}
-			</a>
-			<a
-				class="flex items-center gap-2 text-sm text-muted hover:text-accent-hover"
-				href={`${REPOSITORY}/blob/main/LICENSE`}
-				target="_blank"
-				rel="noreferrer"
-			>
-				{i18n.t('site.license')}
-			</a>
+				<a
+					class="inline-flex items-center gap-2 transition-colors duration-200 hover:text-accent-hover"
+					href={REPOSITORY}
+					target="_blank"
+					rel="noreferrer"
+				>
+					<IconBrandGithub size={20} stroke={1.6} aria-hidden="true" />
+					{i18n.t('site.source')}
+				</a>
+				<a
+					class="inline-flex items-center gap-2 transition-colors duration-200 hover:text-accent-hover"
+					href={`${REPOSITORY}/blob/main/LICENSE`}
+					target="_blank"
+					rel="noreferrer"
+				>
+					{i18n.t('site.license')}
+				</a>
+			</nav>
 		</div>
 	</footer>
 </div>
