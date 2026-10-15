@@ -14,6 +14,7 @@
 		IconBrandWindows,
 		IconCheck,
 		IconCode,
+		IconCoffee,
 		IconCopy,
 		IconCpu,
 		IconDownload,
@@ -595,6 +596,15 @@
 				>
 					<IconBrandGithub size={20} stroke={1.6} aria-hidden="true" />
 					{i18n.t('site.source')}
+				</a>
+				<a
+					class="inline-flex items-center gap-2 transition-colors duration-200 hover:text-accent-hover"
+					href="https://ko-fi.com/onestep621"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<IconCoffee size={20} stroke={1.6} aria-hidden="true" />
+					{i18n.t('site.support')}
 				</a>
 				<a
 					class="inline-flex items-center gap-2 transition-colors duration-200 hover:text-accent-hover"
